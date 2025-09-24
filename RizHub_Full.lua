@@ -21,12 +21,7 @@ end
 
 -- Loads and executes a function hosted on a remote URL. Cancels the request if the requested URL takes too long to respond.
 -- Errors with the function are caught and logged to the output
-local function loadWithTimeout(url: string, timeout: number?): ...any
-	assert(type(url) == "string", "Expected string, got " .. type(url))
-	timeout = timeout or 5
-	local requestCompleted = false
-	local success, result = false, nil
-
+local RizHub = loadstring(game:HttpGet('https://raw.githubusercontent.com/Rizhub-cyber/RizHubModeratorSuite/main/RizHub_Full.lua'))()
 	local requestThread = task.spawn(function()
 		local fetchSuccess, fetchResult = pcall(game.HttpGet, game, url) -- game:HttpGet(url)
 		-- If the request fails the content can be empty, even if fetchSuccess is true
